@@ -4,7 +4,7 @@ window.onload = function () {
             "Authorization": eval("(" + localStorage.getItem('Authorization') + ")")
         },
         url: "http://cinscby.natapp1.cc/article/selectAll",
-        type: "post",
+        type: "get",
         dataType: "json",
         data: {
             pageNum:1,
@@ -27,7 +27,7 @@ window.onload = function () {
                     var header = document.createElement("header");
                     header.setAttribute("class","blog-item-header");
                     var a1 = document.createElement("a");
-                    a1.setAttribute("href","blog-details.html");
+                    a1.setAttribute("href","blog-details.html?"+"blogId="+d[i]['blogId']);
                     var h2 = document.createElement("h2");
                     h2.innerText = d[i]['title'];
                     a1.appendChild(h2);
@@ -77,6 +77,10 @@ window.onload = function () {
                     article.appendChild(footer);
                     bigDiv.appendChild(article);
                     blogContainer.appendChild(bigDiv);
+                    var clearDiv = document.createElement("div");
+                    clearDiv.setAttribute("style","clear:both");
+                    blogContainer.appendChild(clearDiv);
+                    blogContainer.style.height = "100%";
                 };
             } else {
                 swal("错误提醒", b, "warning");

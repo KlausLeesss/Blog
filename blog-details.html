@@ -26,6 +26,7 @@
 
     <!-- Custom Styles -->
     <link rel="stylesheet" href="css/custom.css">
+    <link rel="stylesheet" href="css/blogDetails.css">
 </head>
 
 <body>
@@ -63,6 +64,7 @@
                                 <!--博客主页-->
                                 <li><a href="blog-right-sidebar.html">博客</a></li>
                                 <li><a href="diary.html">日记本</a></li>
+                                <li><a href="personal-information.html">个人信息</a></li>
                                 <li><a href="login.html">登录</a></li>
                             </ul>
                         </nav>
@@ -105,94 +107,102 @@
                             <div class="blog-details">
 
                                 <article class="blog-item sticky">
-                                    <div class="blog-item-header">
-                                        <img src="img/blog/blog-details/blog-image-1.jpg" alt="blog thumb">
-                                    </div>
-                                    <div class="blog-item-footer">
-                                        <ul class="blog-item-meta">
-                                            <li><i class="fa fa-user-o"></i>By <a href="blog.html">Admin</a></li>
-                                            <li><i class="fa fa-calendar-o"></i> 30 Nov 2018</li>
-                                            <li><i class="fa fa-comments-o"></i><a href="#">3 Comments</a></li>
-                                        </ul>
-                                    </div>
+<!--                                    <div class="blog-item-header">-->
+<!--                                        <img src="img/blog/blog-details/blog-image-1.jpg" alt="blog thumb">-->
+<!--                                    </div>-->
                                     <div class="blog-item-body">
-                                        <h3 class="blog-item-title">Accusamus iste quia qui quisquam qui velit ducimus iure dolores.</h3>
-                                        <p>Sit nam rerum sed aut est et. Numquam non accusantium qui deleniti nihil harum itaque. Aspernatur debitis volu necessi tatibus omnis est provident odio accusantium qui deleniti nihil harum itaque. Aspernatur debitis
-                                            volu necessi tatibus omnis est provident odio it nam rerum sed aut est et. Ad quo minima. Rem ut voluptate nihil suscipit quis impedit dolores doloribus. Sed distinctio ducimus nemo laboriosam itaque. Est id
-                                            eius perspiciatis sequi ullam. Corrupti nihil non ut in accusantium animi alias quaerat. Ipsum commodi adipisci. Consectetur ipsa qui autem quod molestiae deserunt sit et. Fugiat dolore sunt. Natus ex ea laboriosam
-                                            iste doloremque aut quia. Unde repellendus et et quibusdam dicta provident recusandae quia. Maiores voluptatem iure ad animi et. Consequatur voluptatem eos. Unde repellendus et et quibusdam dicta provident recusandae
-                                            quia. Maiores voluptatem iure ad animi et. Consequatur voluptatem eos.</p>
+                                        <h3 class="blog-item-title" id="title">Accusamus iste quia qui quisquam qui velit ducimus iure dolores.</h3>
+<!--                                        <p>Sit nam rerum sed aut est et. Numquam non accusantium qui deleniti nihil harum itaque. Aspernatur debitis volu necessi tatibus omnis est provident odio accusantium qui deleniti nihil harum itaque. Aspernatur debitis-->
+<!--                                            volu necessi tatibus omnis est provident odio it nam rerum sed aut est et. Ad quo minima. Rem ut voluptate nihil suscipit quis impedit dolores doloribus. Sed distinctio ducimus nemo laboriosam itaque. Est id-->
+<!--                                            eius perspiciatis sequi ullam. Corrupti nihil non ut in accusantium animi alias quaerat. Ipsum commodi adipisci. Consectetur ipsa qui autem quod molestiae deserunt sit et. Fugiat dolore sunt. Natus ex ea laboriosam-->
+<!--                                            iste doloremque aut quia. Unde repellendus et et quibusdam dicta provident recusandae quia. Maiores voluptatem iure ad animi et. Consequatur voluptatem eos. Unde repellendus et et quibusdam dicta provident recusandae-->
+<!--                                            quia. Maiores voluptatem iure ad animi et. Consequatur voluptatem eos.</p>-->
                                         <blockquote>
-                                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente aperiam minima libero perspiciatis sequi pariatur Distinctio aut sed vel. Dolorum voluptates et ex commodi.</p>
+                                            <p id="theMainBlog">Lorem ipsum dolor sit amet consectetur adipisicing elit. Sapiente aperiam minima libero perspiciatis sequi pariatur Distinctio aut sed vel. Dolorum voluptates et ex commodi.</p>
                                         </blockquote>
-                                        <p>Doloribus quaerat sapiente sit. Fugit ratione sunt sit dolorem error quia rerum reiciendis. Qui et fugiat ex quae quas labore voluptates temporibus. Harum in voluptatum fuga sed corrupti veniam corrupti dolorem
-                                            voluptatem. . Harum in voluptatum fuga sed corrupti veniam corrupti dolorem voluptatem. corrupti dolorem voluptatem. Doloribus quaerat sapiente sit. Fugit ratione sunt sit dolorem error quia rerum reiciendis.
-                                            Qui et fugiat ex quae quas labore voluptates temporibus. Harum in voluptatum fuga sed corrupti veniam corrupti dolorem voluptatem. . Harum in voluptatum fuga sed corrupti veniam corrupti dolorem voluptatem.
-                                            corrupti dolorem voluptatem.</p>
+<!--                                        <p>Doloribus quaerat sapiente sit. Fugit ratione sunt sit dolorem error quia rerum reiciendis. Qui et fugiat ex quae quas labore voluptates temporibus. Harum in voluptatum fuga sed corrupti veniam corrupti dolorem-->
+<!--                                            voluptatem. . Harum in voluptatum fuga sed corrupti veniam corrupti dolorem voluptatem. corrupti dolorem voluptatem. Doloribus quaerat sapiente sit. Fugit ratione sunt sit dolorem error quia rerum reiciendis.-->
+<!--                                            Qui et fugiat ex quae quas labore voluptates temporibus. Harum in voluptatum fuga sed corrupti veniam corrupti dolorem voluptatem. . Harum in voluptatum fuga sed corrupti veniam corrupti dolorem voluptatem.-->
+<!--                                            corrupti dolorem voluptatem.</p>-->
+                                    </div>
+                                    <div class="blog-item-footer" style="position: relative">
+                                        <ul class="blog-item-meta" style="float: left">
+                                            <li><i class="fa fa-user-o"></i>By <a href="blog.html" id="authorA">Admin</a></li>
+                                            <li id="dateLi"><i class="fa fa-calendar-o"></i> </li>
+                                            <li><i class="fa fa-comments-o"></i><a href="#" id="commentA">3 Comments</a></li>
+                                        </ul>
+                                        <ul class="blog-item-meta" style="float: right">
+                                            <li id="likeLi"><i class="fa fa-heart-o" id="heart" onclick="changeLike()"></i><a href="#" id="likeA"></a></li>
+                                            <li id="readLi"><i class="fa fa-bookmark-o" id="read"></i></li>
+                                        </ul>
                                     </div>
                                 </article>
 
-                                <div class="blog-details-bottom">
-                                    <div class="blog-details-tags">
-                                        <h6>Tags: </h6>
-                                        <ul>
-                                            <li><a href="blog-right-sidebar.html">Design</a></li>
-                                            <li><a href="blog-right-sidebar.html">Development</a></li>
-                                            <li><a href="blog-right-sidebar.html">Creative</a></li>
-                                        </ul>
-                                    </div>
-                                    <div class="blog-details-share">
-                                        <h6>Share: </h6>
-                                        <ul>
-                                            <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                                            <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                                            <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
-                                            <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-                                        </ul>
-                                    </div>
-                                </div>
 
-                                <div class="commentlist section-padding-top-sm">
+
+                                <div class="commentlist section-padding-top-sm" id="commentListDiv">
                                     <h6 class="small-title">3 COMMENTS</h6>
 
-                                    <div class="single-comment">
-                                        <div class="single-comment-thumb">
-                                            <img src="img/author-image/author-image-1.png" alt="hastech logo">
-                                        </div>
-                                        <div class="single-comment-content">
-                                            <div class="single-comment-content-top">
-                                                <h6><a href="blog-right-sidebar.html">ADMIN</a> – February 17, 2015</h6>
-                                                <a href="#" class="reply-button">Reply</a>
-                                            </div>
-                                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam fringilla augue nec est tristique auctor. Donec non est at libero vulputate rutrum.</p>
-                                        </div>
-                                    </div>
+<!--                                    <div class="single-comment">-->
+<!--                                        <div class="single-comment-thumb">-->
+<!--                                            <img src="img/author-image/author-image-1.png" alt="hastech logo">-->
+<!--                                        </div>-->
+<!--                                        <div class="single-comment-content">-->
+<!--                                            <div class="single-comment-content-top">-->
+<!--                                                <h6><a href="blog-right-sidebar.html">ADMIN</a></h6>-->
+<!--                                                <p align="right"> – February 17, 2015</p>-->
+<!--                                            </div>-->
+<!--                                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam fringilla augue nec est tristique auctor. Donec non est at libero vulputate rutrum.</p>-->
+<!--                                            <div class="single-comment-content-top" style="position: relative;height: 29px">-->
+<!--                                                <a href="#" class="reply-button" style="position: absolute;right: 0px">Reply</a>-->
+<!--                                            </div>-->
+<!--                                        </div>-->
+<!--                                    </div>-->
 
-                                    <div class="single-comment single-comment-reply">
-                                        <div class="single-comment-thumb">
-                                            <img src="img/author-image/author-image-2.png" alt="hastech logo">
-                                        </div>
-                                        <div class="single-comment-content">
-                                            <div class="single-comment-content-top">
-                                                <h6><a href="blog-right-sidebar.html">DEMO</a> – February 17, 2015</h6>
-                                                <a href="#" class="reply-button">Reply</a>
-                                            </div>
-                                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam fringilla augue nec est tristique auctor. Donec non est at libero vulputate rutrum.</p>
-                                        </div>
-                                    </div>
+<!--                                    <div class="single-comment single-comment-reply" style="margin-left: 90px">-->
+<!--                                        <div class="single-comment-thumb">-->
+<!--                                            <img src="img/author-image/author-image-2.png" alt="hastech logo">-->
+<!--                                        </div>-->
+<!--                                        <div class="single-comment-content" style="padding: 10px">-->
+<!--                                            <div class="single-comment-content-top" style="height: 33px">-->
+<!--                                                <h6><a href="blog-right-sidebar.html">DEMO</a><a> @ ADMIN</a></h6>-->
+<!--                                                <p align="right"> – February 17, 2015</p>-->
+<!--                                            </div>-->
+<!--                                            <p style="margin-bottom: 5px">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam fringilla augue nec est tristique auctor. Donec non est at libero vulputate rutrum.</p>-->
+<!--                                            <div class="single-comment-content-top" style="position: relative;height: 29px">-->
+<!--                                                <a href="#" class="reply-button" style="position: absolute;right: 0">Reply</a>-->
+<!--                                            </div>-->
+<!--                                        </div>-->
+<!--                                    </div>-->
 
-                                    <div class="single-comment">
-                                        <div class="single-comment-thumb">
-                                            <img src="img/author-image/author-image-1.png" alt="hastech logo">
-                                        </div>
-                                        <div class="single-comment-content">
-                                            <div class="single-comment-content-top">
-                                                <h6><a href="blog-right-sidebar.html">ADMIN</a> – February 17, 2015</h6>
-                                                <a href="#" class="reply-button">Reply</a>
-                                            </div>
-                                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam fringilla augue nec est tristique auctor. Donec non est at libero vulputate rutrum.</p>
-                                        </div>
-                                    </div>
+<!--                                    <div class="single-comment">-->
+<!--                                        <div class="single-comment-thumb">-->
+<!--                                            <img src="img/author-image/author-image-1.png" alt="hastech logo">-->
+<!--                                        </div>-->
+<!--                                        <div class="single-comment-content">-->
+<!--                                            <div class="single-comment-content-top">-->
+<!--                                                <h6><a href="blog-right-sidebar.html">ADMIN</a></h6>-->
+<!--                                                <p align="right"> – February 17, 2015</p>-->
+<!--                                            </div>-->
+<!--                                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam fringilla augue nec est tristique auctor. Donec non est at libero vulputate rutrum.</p>-->
+<!--                                            <div class="single-comment-content-top" style="position: relative;height: 29px">-->
+<!--                                                <a href="#" class="reply-button" style="position: absolute;right: 0px">Reply</a>-->
+<!--                                            </div>-->
+<!--                                        </div>-->
+<!--                                    </div>-->
+
+<!--                                    <div class="single-comment">-->
+<!--                                        <div class="single-comment-thumb">-->
+<!--                                            <img src="img/author-image/author-image-1.png" alt="hastech logo">-->
+<!--                                        </div>-->
+<!--                                        <div class="single-comment-content">-->
+<!--                                            <div class="single-comment-content-top">-->
+<!--                                                <h6><a href="blog-right-sidebar.html">ADMIN</a> – February 17, 2015</h6>-->
+<!--                                                <a href="#" class="reply-button">Reply</a>-->
+<!--                                            </div>-->
+<!--                                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam fringilla augue nec est tristique auctor. Donec non est at libero vulputate rutrum.</p>-->
+<!--                                        </div>-->
+<!--                                    </div>-->
 
                                 </div>
 
@@ -203,16 +213,11 @@
                                             <div class="karigor-form-input">
                                                 <textarea id="new-review-textbox" cols="30" rows="5" placeholder="Comment"></textarea>
                                             </div>
-                                            <div class="karigor-form-input karigor-form-input-half">
-                                                <input type="text" id="new-review-name" placeholder="Name*" required>
-                                            </div>
-                                            <div class="karigor-form-input karigor-form-input-half">
-                                                <input type="email" id="new-review-email" placeholder="Email*" required>
-                                            </div>
                                             <div class="karigor-form-input">
-                                                <button type="submit" class="button">
-                                                    <span>SEND COMMENT</span>
-                                                </button>
+<!--                                                <button class="button" onclick="insertComment()">-->
+<!--                                                    <span>SEND COMMENT</span>-->
+<!--                                                </button>-->
+                                                <input id="submitBtn" type="button" onclick="insertComment()" value="SEND COMMENT" style="font-family:Dosis, sans-serif;width: 157px;height: 45px;background-color: #555;border: 1px solid #555;color:#FFF;font-size: 14px;font-weight: 700">
                                             </div>
                                         </div>
                                     </form>
@@ -251,6 +256,7 @@
     <script src="js/bootstrap.min.js"></script>
     <script src="js/plugins.js"></script>
     <script src="js/main.js"></script>
+    <script type="application/javascript" src="js/blog-details.js"></script>
 </body>
 
 
