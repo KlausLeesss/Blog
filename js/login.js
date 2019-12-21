@@ -41,17 +41,22 @@ function getCode(e) {
                 password: password,
             },
             success: function(data) {
+                console.log(data);
                 var a = data['code'];
                 var b = data['msg'];
                 var c = data['data'];
                 var d = c['token'];
                 var e = c['role'];
+                var f = c['username'];
+                var g = c['headPortrait'];
                 window.localStorage.setItem('Authorization', JSON.stringify(d));
                 window.localStorage.setItem('role', JSON.stringify(e));
+                window.localStorage.setItem('username', JSON.stringify(f));
+                window.localStorage.setItem('headPortrait', JSON.stringify(g));
 
                 if (a == 0) {
                     alert(b);
-                    window.location.href = "index.html";
+                    //window.location.href = "index.html";
                 } else {
                     alert(b);
                 }
