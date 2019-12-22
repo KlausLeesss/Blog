@@ -37,6 +37,9 @@ window.onload = function () {
             for(var i = 0;i<a['commentList'].length;i++) {          //动态生成父级评论
                 var commentDiv = document.createElement("div");
                 commentDiv.setAttribute("class", "single-comment");
+                var fatherSonDiv = document.createElement("div");
+                fatherSonDiv.setAttribute("class", "father-son");
+                fatherSonDiv.setAttribute("style", "margin-bottom:25px");
                 var imgDiv = document.createElement("div");
                 imgDiv.setAttribute("class", "single-comment-thumb");
                 var imgHead = document.createElement("img");
@@ -80,7 +83,8 @@ window.onload = function () {
                 contentDiv.appendChild(contentTopDiv1);
                 commentDiv.appendChild(imgDiv);
                 commentDiv.appendChild(contentDiv);
-                commentListDiv.appendChild(commentDiv);
+                fatherSonDiv.appendChild(commentDiv);
+                //commentListDiv.appendChild(commentDiv);
                 if(a['commentList'][i]['replyVO']!==''){            //动态生成子级评论
                         for(var n = 0;n<a['commentList'][i]['replyVO'].length;n++){
                             var commentRDiv = document.createElement("div");
@@ -133,13 +137,15 @@ window.onload = function () {
                             contentRDiv.appendChild(contentTopRDiv1);
                             commentRDiv.appendChild(imgRDiv);
                             commentRDiv.appendChild(contentRDiv);
-                            commentListDiv.appendChild(commentRDiv);
+                            fatherSonDiv.appendChild(commentRDiv);
+                            //commentListDiv.appendChild(commentRDiv);
                         }
                 }
+                commentListDiv.appendChild(fatherSonDiv);
             }
-            var CountDiv = document.createElement("div");
-            CountDiv.setAttribute("class","xxx");
-            commentListDiv.appendChild(CountDiv);
+            // var CountDiv = document.createElement("div");
+            // CountDiv.setAttribute("class","xxx");
+            // commentListDiv.appendChild(CountDiv);
 
 
         },
@@ -335,26 +341,36 @@ function insertComment() {
 
 function insertSecCom(e) {
     console.log(e.target.nextElementSibling.innerText);
+    var c = e.target.nextElementSibling.innerText;
     console.log(e.target.nextElementSibling.nextElementSibling.innerText);
+    var d = e.target.nextElementSibling.nextElementSibling.innerText;
     var k = document.createElement("div");
     k.setAttribute("class","replyBox")
-    k.innerHTML = "<form action=\"#\" class=\"karigor-form single-comment-content\" style=\"text-align: right\">\n" +
+    k.innerHTML = "<div class=\"single-comment-reply\" style=\"margin-bottom: 10px\">\n" +
+        "            <form action=\"#\" class=\"karigor-form\" style=\"text-align: right\">\n" +
         "                <div class=\"karigor-form-inner\">\n" +
         "                    <div class=\"karigor-form-input\" style=\"margin-top: 0\">\n" +
-        "                        <textarea cols=\"30\" rows=\"5\" placeholder=\"Comment\" style=\"max-height: 50px;min-height: 50px\"></textarea>\n" +
+        "                        <textarea placeholder=\"Comment\" style=\"max-height: 50px;min-height: 50px;width: 97%;border-radius: 10px 10px 0 0\"></textarea>\n" +
         "                    </div>\n" +
-        "                    <div class=\"karigor-form-input\" style=\"margin-top: 0;margin-bottom: 10px\">\n" +
-        "                        <input  type=\"button\" value=\"SEND REPLY\" style=\"font-family:Dosis, sans-serif;height: 33px;background-color: #555;border: 1px solid #555;color:#FFF;font-size: 14px;font-weight: 700\">\n" +
+        "                    <div class=\"karigor-form-input\" style=\"margin-top: 0\">\n" +
+        "                        <input  type=\"button\" onclick=\"insertSecComBtn(this)\" value=\"SEND COMMENT\" style=\"font-family:Dosis, sans-serif;height: 33px;width: 97%;background-color: #555;border: 1px solid #555;color:#FFF;font-size: 14px;font-weight: 700;border-radius: 0 0 10px 10px\">\n" +
         "                    </div>\n" +
         "                </div>\n" +
-        "            </form>";
+        "            </form>\n" +
+        "            </div>";
 
-    if(e.target.parentElement.parentElement.parentElement.nextElementSibling.className !== "replyBox") {
+    if(e.target.className === "reply-button") {
         e.target.parentElement.parentElement.parentElement.after(k);
+        e.target.className = "reply-button hasAdd";
     }
-    else if(e.target.parentElement.parentElement.parentElement.nextElementSibling.className === "replyBox"){
+    else{
         e.target.parentElement.parentElement.parentElement.nextElementSibling.remove();
+        e.target.className = "reply-button";
     }
+}
+
+function insertSecComBtn(e) {
+    console.log(e.parentElement.parentElement.parentElement.parentElement.parentElement.previousElementSibling);
 }
 
 function CurentTime() {
