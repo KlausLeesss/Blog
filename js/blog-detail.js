@@ -14,9 +14,8 @@ window.onload = function () {
             console.log(data);
             var a = data['data'];
             var commentListDiv = document.getElementById("commentListDiv");
-
-
             var ii = document.getElementById("heart");//点赞按钮初始化
+
             if(a['isLike'] === false){
                 ii.className = "fa fa-heart-o";
             }
@@ -24,12 +23,12 @@ window.onload = function () {
                 ii.className = "fa fa-heart";
             }
 
-
             console.log(a['commentList']);
             document.getElementById("title").innerText = a['title'];
             document.getElementById("theMainBlog").innerHTML = a['article'];
             document.getElementById("authorA").innerText = a['author'];
             document.getElementById("commentA").innerText = a['comments'];
+            document.getElementById("commentSum").innerText = a['comments']+" COMMENTS";
             document.getElementById("dateLi").append(a['creatTime']);
             document.getElementById("likeA").innerText = a['likes'];
             document.getElementById("likeLi").append(" likes");
@@ -260,8 +259,6 @@ function changeLike(){                  //点赞功能
 }
 
 function insertComment() {
-    console.log(document.getElementById("new-review-textbox").value);
-    console.log(eval("(" + localStorage.getItem('Authorization') + ")"));
     if(document.getElementById("new-review-textbox").value === ''){
         alert("评论不可为空");
     }
@@ -330,7 +327,9 @@ function insertComment() {
                 commentDiv.appendChild(contentDiv);
                 commentListDiv.appendChild(commentDiv);
                 document.getElementById("new-review-textbox").value = "";
-            },
+                document.getElementById("commentSum").innerText = parseInt(document.getElementById("commentSum").innerText.split(" ")[0])+1+" COMMENTS";
+                document.getElementById("commentA").innerText = parseInt(document.getElementById("commentA").innerText)+1+"";
+                },
             error: function(err) {
                 console.log(err)
             }
@@ -370,7 +369,81 @@ function insertSecCom(e) {
 }
 
 function insertSecComBtn(e) {
-    console.log(e.parentElement.parentElement.parentElement.parentElement.parentElement.previousElementSibling);
+    console.log(e.parentElement.previousElementSibling.childNodes[1].value);
+    //添加新评论的评论块
+    console.log(e.parentElement.parentElement.parentElement.parentElement.parentElement.previousElementSibling.parentElement);
+    //获取回复用户的名字
+    console.log(e.parentElement.parentElement.parentElement.parentElement.parentElement.previousElementSibling.lastElementChild.firstElementChild.firstElementChild.firstElementChild.innerHTML);
+    console.log(e.parentElement.parentElement.parentElement.parentElement.parentElement.previousElementSibling.parentElement.firstElementChild.lastElementChild.lastElementChild.lastElementChild.innerHTML);
+    var pid = e.parentElement.parentElement.parentElement.parentElement.parentElement.previousElementSibling.parentElement.firstElementChild.lastElementChild.lastElementChild.lastElementChild.innerHTML;
+    console.log(e.parentElement.parentElement.parentElement.parentElement.parentElement.previousElementSibling.lastElementChild.lastElementChild.lastElementChild.previousElementSibling.innerHTML);
+    var userId = e.parentElement.parentElement.parentElement.parentElement.parentElement.previousElementSibling.lastElementChild.lastElementChild.lastElementChild.previousElementSibling.innerHTML;
+    $.ajax({
+        headers: {
+            "Authorization": eval("(" + localStorage.getItem('Authorization') + ")")
+        },
+        url: "http://cinscby.natapp1.cc/comment/insert",
+        type: "post",
+        dataType: "json",
+        data: {
+            blogId      :UrlParm.parm("blogId"),
+            commentMsg  :e.parentElement.previousElementSibling.childNodes[1].value,
+            replyUserId :parseInt(userId),
+            pid         :parseInt(pid),
+        },
+        success: function(data) {
+            console.log(data);
+            var commentRDiv = document.createElement("div");
+            commentRDiv.setAttribute("class", "single-comment single-comment-reply");
+            commentRDiv.setAttribute("style", "margin-left: 90px");
+            var imgRDiv = document.createElement("div");
+            imgRDiv.setAttribute("class", "single-comment-thumb");
+            var imgRHead = document.createElement("img");
+            imgRHead.setAttribute("src", "http://cinscby.natapp1.cc" + window.localStorage.getItem("headPortrait").replace(/^\"|\"$/g,''));
+            imgRHead.setAttribute("alt","hastech logo");
+            imgRDiv.appendChild(imgRHead);
+            var contentRDiv = document.createElement("div");
+            contentRDiv.setAttribute("class","single-comment-content");
+            contentRDiv.setAttribute("style","width:100%;padding: 10px");
+            var contentTopRDiv = document.createElement("div");
+            contentTopRDiv.setAttribute("class","single-comment-content-top");
+            contentTopRDiv.setAttribute("style","height: 33px");
+            var contentTopRDiv1 = document.createElement("div");
+            contentTopRDiv1.setAttribute("class","single-comment-content-top");
+            contentTopRDiv1.setAttribute("style","position: relative;height: 29px");
+            var Rh6 = document.createElement("h6");
+            var Ra1 = document.createElement("a");
+            var Ra2 = document.createElement("a");
+            var Ra3 = document.createElement("a");
+            var Rp1 = document.createElement("p");
+            Rp1.innerText = " - "+CurentTime();
+            Ra1.innerText = eval("(" + localStorage.getItem('username') + ")").replace(/^\"|\"$/g,'');
+            Ra3.innerText = " @ " + e.parentElement.parentElement.parentElement.parentElement.parentElement.previousElementSibling.lastElementChild.firstElementChild.firstElementChild.firstElementChild.innerHTML;
+            Ra2.setAttribute("class","reply-button");
+            Ra2.setAttribute("style","position: absolute;right: 0;color:white");
+            Ra2.addEventListener("click", insertSecCom);
+            Ra2.innerText = "REPLY";
+            Rh6.appendChild(Ra1);
+            Rh6.appendChild(Ra3);
+            var Rp = document.createElement("p");
+            Rp.innerText = e.parentElement.previousElementSibling.childNodes[1].value;
+            contentTopRDiv.appendChild(Rh6);
+            contentTopRDiv.appendChild(Rp1);
+            contentTopRDiv1.appendChild(Ra2);
+            contentRDiv.appendChild(contentTopRDiv);
+            contentRDiv.appendChild(Rp);
+            contentRDiv.appendChild(contentTopRDiv1);
+            commentRDiv.appendChild(imgRDiv);
+            commentRDiv.appendChild(contentRDiv);
+            e.parentElement.parentElement.parentElement.parentElement.parentElement.previousElementSibling.parentElement.appendChild(commentRDiv);
+            document.getElementById("commentSum").innerText = parseInt(document.getElementById("commentSum").innerText.split(" ")[0])+1+" COMMENTS";
+            document.getElementById("commentA").innerText = parseInt(document.getElementById("commentA").innerText)+1+"";
+            e.parentElement.parentElement.parentElement.parentElement.parentElement.remove();//在添加评论后将输入框移除
+            },
+        error: function(err) {
+            console.log(err)
+        }
+    })
 }
 
 function CurentTime() {
